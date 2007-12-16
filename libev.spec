@@ -1,17 +1,21 @@
+#
+# Conditional build:
 %bcond_without	static_libs	# don't build static library
 #
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	1.3e
+Version:	1.85
 Release:	1
 License:	BSD
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
-# Source0-md5:	7f54d064bf0769a63efd19eace23a8b1
+# Source0-md5:	286c662716212987064c095e7c447e3d
 URL:		http://software.schmorp.de/pkg/libev
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
+# inotify interface
+BuildRequires:	glibc-devel >= 6:2.4
 BuildRequires:	libtool
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -23,9 +27,9 @@ in event-driven network servers.
 
 %description -l pl.UTF-8
 API libev dostarcza mechanizm do wykonywania funkcji callback, kiedy
-nastąpiło określone zdarzenie w deskryptorze pliku lub po
-określonym czasie. Ma to na celu zastąpienie asynchronicznych pętli
-w sterowanych zdarzeniami usługach sieciowych.
+nastąpiło określone zdarzenie w deskryptorze pliku lub po określonym
+czasie. Ma to na celu zastąpienie asynchronicznych pętli w sterowanych
+zdarzeniami usługach sieciowych.
 
 %package devel
 Summary:	Header files for libev library
@@ -62,13 +66,20 @@ Statyczna biblioteka libev.
 %{__automake}
 %configure \
 	%{!?with_static_libs:--disable-static}
-%{__make}
+
+# override -O3 which overrides our optflags in configure
+%{__make} \
+	CFLAGS="%{rpmcflags}"
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
+
+# avoid conflict with libevent
+install -d $RPM_BUILD_ROOT%{_includedir}/libev
+mv $RPM_BUILD_ROOT%{_includedir}/event*.h $RPM_BUILD_ROOT%{_includedir}/libev
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -78,14 +89,20 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libev-*.so.*.*.*
+%doc README
+%attr(755,root,root) %{_libdir}/libev.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/libev.so.1
 
 %files devel
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/libev.so
 %{_libdir}/libev.la
-%{_includedir}/ev*.h
-%{_mandir}/man3/ev*.3*
+%{_includedir}/ev.h
+%{_includedir}/ev++.h
+%dir %{_includedir}/libev
+%{_includedir}/libev/event.h
+%{_includedir}/libev/event_compat.h
+%{_mandir}/man3/ev.3*
 
 %if %{with static_libs}
 %files static
