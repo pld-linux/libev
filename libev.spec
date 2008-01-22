@@ -5,12 +5,12 @@
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	1.85
+Version:	2.01
 Release:	1
-License:	BSD
+License:	BSD or GPL v2+
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
-# Source0-md5:	286c662716212987064c095e7c447e3d
+# Source0-md5:	90717f50e0d23a855138524c09f782b0
 URL:		http://software.schmorp.de/pkg/libev
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -79,7 +79,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # avoid conflict with libevent
 install -d $RPM_BUILD_ROOT%{_includedir}/libev
-mv $RPM_BUILD_ROOT%{_includedir}/event*.h $RPM_BUILD_ROOT%{_includedir}/libev
+mv $RPM_BUILD_ROOT%{_includedir}/event.h $RPM_BUILD_ROOT%{_includedir}/libev
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -89,9 +89,9 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc Changes LICENSE README
 %attr(755,root,root) %{_libdir}/libev.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libev.so.1
+%attr(755,root,root) %ghost %{_libdir}/libev.so.2
 
 %files devel
 %defattr(644,root,root,755)
@@ -101,7 +101,6 @@ rm -rf $RPM_BUILD_ROOT
 %{_includedir}/ev++.h
 %dir %{_includedir}/libev
 %{_includedir}/libev/event.h
-%{_includedir}/libev/event_compat.h
 %{_mandir}/man3/ev.3*
 
 %if %{with static_libs}
