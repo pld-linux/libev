@@ -5,12 +5,12 @@
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	2.01
+Version:	3.0
 Release:	1
 License:	BSD or GPL v2+
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
-# Source0-md5:	90717f50e0d23a855138524c09f782b0
+# Source0-md5:	2168de45883b40ab9f1b451a5b20e280
 URL:		http://software.schmorp.de/pkg/libev
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes LICENSE README
 %attr(755,root,root) %{_libdir}/libev.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libev.so.2
+%attr(755,root,root) %ghost %{_libdir}/libev.so.3
 
 %files devel
 %defattr(644,root,root,755)
