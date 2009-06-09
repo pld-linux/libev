@@ -5,19 +5,20 @@
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	3.43
+Version:	3.60
+%define		_ver	3.6
 Release:	1
 License:	BSD or GPL v2+
 Group:		Libraries
-Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
-# Source0-md5:	6dddea9189345f0c8c36c4eb8ecce441
+Source0:	http://dist.schmorp.de/libev/%{name}-%{_ver}.tar.gz
+# Source0-md5:	40901d8d679cae4e42a15f5146bcf6a1
 URL:		http://software.schmorp.de/pkg/libev
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 # inotify interface
 BuildRequires:	glibc-devel >= 6:2.4
 BuildRequires:	libtool
-BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{_ver}-root-%(id -u -n)
 
 %description
 The libev API provides a mechanism to execute a callback function when
@@ -56,7 +57,7 @@ Static libev library.
 Statyczna biblioteka libev.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{_ver}
 
 %build
 %{__libtoolize}
