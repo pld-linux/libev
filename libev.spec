@@ -18,7 +18,7 @@ BuildRequires:	automake
 # inotify interface
 BuildRequires:	glibc-devel >= 6:2.4
 BuildRequires:	libtool
-BuildRoot:	%{tmpdir}/%{name}-%{_ver}-root-%(id -u -n)
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 The libev API provides a mechanism to execute a callback function when
