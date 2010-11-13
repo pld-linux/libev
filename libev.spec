@@ -2,16 +2,16 @@
 # Conditional build:
 %bcond_without	static_libs	# don't build static library
 
-%define		mver	3.9
+%define		mver	4.01
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	3.90
+Version:	4.01
 Release:	1
 License:	BSD or GPL v2+
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{mver}.tar.gz
-# Source0-md5:	40fe7d56d70db83cc0c22a6a68d87a96
+# Source0-md5:	2a6e0d3d7eda7d54b39f3800b8279707
 URL:		http://software.schmorp.de/pkg/libev
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc Changes LICENSE README
 %attr(755,root,root) %{_libdir}/libev.so.*.*.*
-%attr(755,root,root) %ghost %{_libdir}/libev.so.3
+%attr(755,root,root) %ghost %{_libdir}/libev.so.4
 
 %files devel
 %defattr(644,root,root,755)
