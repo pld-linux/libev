@@ -11,7 +11,7 @@ License:	BSD or GPL v2+
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
 # Source0-md5:	bf0007e37240103d3c2be80ca9bee3f9
-URL:		http://software.schmorp.de/pkg/libev
+URL:		http://software.schmorp.de/pkg/libev.html
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 # inotify interface
