@@ -5,12 +5,12 @@
 Summary:	libev - an event notification library
 Summary(pl.UTF-8):	libev - biblioteka powiadamiająca o zdarzeniach
 Name:		libev
-Version:	4.23
+Version:	4.24
 Release:	1
 License:	BSD or GPL v2+
 Group:		Libraries
 Source0:	http://dist.schmorp.de/libev/%{name}-%{version}.tar.gz
-# Source0-md5:	f1dbf786ead8307e0d4f5f68f2f8526c
+# Source0-md5:	94459a5a22db041dec6f98424d6efe54
 URL:		http://software.schmorp.de/pkg/libev.html
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
